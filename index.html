@@ -1,0 +1,1040 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mundo Fofinho Volume 1: uma aventura mágica para colorir.">
+<title>Mundo Fofinho — Uma aventura para colorir</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --rosa: #ff6fa7;
+  --roxo: #6c63d9;
+  --texto: #35364e;
+  --suave: #74758a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Nunito", sans-serif;
+  background: #fffafd;
+  color: var(--texto);
+}
+a { text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+h1, h2, h3 { font-family: "Baloo 2", sans-serif; }
+.container { width: min(1140px, 90%); margin: auto; }
+
+/* MENU */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255,255,255,.97);
+  border-bottom: 1px solid #f3edf3;
+}
+nav {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  color: var(--rosa);
+  font: 800 25px "Baloo 2", sans-serif;
+}
+.menu { display: flex; align-items: center; gap: 28px; }
+.menu a { color: var(--texto); font-size: 14px; font-weight: 900; }
+.menu .comprar-topo {
+  background: var(--roxo);
+  color: white;
+  padding: 13px 23px;
+  border-radius: 40px;
+  box-shadow: 0 10px 25px #6c63d933;
+}
+
+/* PRIMEIRA TELA */
+.hero {
+  padding: 115px 0 85px;
+  min-height: 850px;
+  background:
+    radial-gradient(circle at 0% 10%, #ffdfed, transparent 40%),
+    radial-gradient(circle at 100% 5%, #d9f0ff, transparent 40%),
+    radial-gradient(circle at 90% 95%, #fff0cb, transparent 30%),
+    #fffafd;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.12fr .88fr;
+  gap: 65px;
+  align-items: center;
+}
+.hero-texto { text-align: left; }
+.tag {
+  display: inline-block;
+  background: white;
+  border-radius: 40px;
+  padding: 11px 17px;
+  color: var(--rosa);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+.hero h1 {
+  font-size: clamp(58px, 6vw, 88px);
+  line-height: 1.03;
+  letter-spacing: -2px;
+  color: var(--roxo);
+  margin: 25px 0;
+}
+.hero h1 span { color: var(--rosa); }
+.hero-descricao {
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--suave);
+  margin-bottom: 25px;
+}
+.personagens { display: flex; gap: 10px; flex-wrap: wrap; }
+.personagens span {
+  padding: 12px 15px;
+  background: white;
+  border-radius: 15px;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* PROMOÇÃO */
+.promocao {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  max-width: 610px;
+  min-height: 108px;
+  margin: 25px 0 24px;
+  padding: 18px;
+  background: #ffffffb8;
+  border: 1px solid #ffd5e6;
+  border-radius: 23px;
+  box-shadow: 0 15px 35px #4438780e;
+}
+.promocao::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  top: -40px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #ffdc6a55;
+}
+.desconto {
+  flex-shrink: 0;
+  padding: 13px 15px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ff4c96, #ff9168);
+  color: white;
+  font-size: 14px;
+  font-weight: 900;
+}
+.promo-texto { position: relative; z-index: 1; }
+.promo-texto small {
+  display: block;
+  color: var(--roxo);
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: 11px;
+}
+.preco-antigo {
+  color: #9393a4;
+  font-weight: 800;
+  text-decoration: line-through;
+  margin-right: 7px;
+}
+.promo-texto strong {
+  color: #ff4f97;
+  font: 800 32px "Baloo 2", sans-serif;
+}
+.promo-texto p { font-size: 12px; font-weight: 800; }
+.promo-texto p b { color: var(--roxo); }
+.hero-acoes { display: flex; align-items: center; gap: 35px; }
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 30px;
+  border-radius: 17px;
+  background: linear-gradient(135deg, #ff61a4, #ff9d69);
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
+  box-shadow: 0 12px 30px #ff6fa73a;
+  transition: transform .2s;
+}
+.botao:hover { transform: translateY(-3px); }
+.link-livro { color: var(--roxo); font-weight: 900; }
+
+/* CARROSSEL */
+.carousel-area { min-width: 0; }
+.carousel {
+  position: relative;
+  max-width: 485px;
+  margin-left: auto;
+  padding: 14px;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 25px 65px #44387825;
+}
+.carousel-janela { overflow: hidden; border-radius: 20px; }
+.carousel-track {
+  display: flex;
+  transition: transform .6s ease;
+  touch-action: pan-y;
+}
+.slide { flex: 0 0 100%; position: relative; }
+.slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: contain;
+  background: white;
+  cursor: zoom-in;
+}
+.slide-label {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  padding: 9px 14px;
+  background: white;
+  color: var(--roxo);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 900;
+  pointer-events: none;
+}
+.seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  color: var(--roxo);
+  font-size: 27px;
+  box-shadow: 0 8px 25px #0002;
+}
+.anterior { left: 25px; }
+.proxima { right: 25px; }
+.pontos {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 18px;
+}
+.ponto {
+  width: 9px;
+  height: 9px;
+  border: none;
+  border-radius: 20px;
+  background: #d6d2eb;
+}
+.ponto.ativo { width: 27px; background: var(--rosa); }
+
+/* BENEFÍCIOS */
+.beneficios {
+  padding: 30px 0;
+  background: white;
+  border-bottom: 1px solid #f5eff5;
+}
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.beneficio { text-align: center; font-size: 14px; font-weight: 900; }
+.beneficio span { display: block; font-size: 26px; margin-bottom: 6px; }
+
+/* SEÇÕES */
+section { padding: 100px 0; }
+.section-heading { text-align: center; margin-bottom: 55px; }
+.section-heading small {
+  color: var(--rosa);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.section-heading h2 {
+  color: var(--roxo);
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1.12;
+  margin: 12px auto 20px;
+  max-width: 850px;
+}
+.section-heading p {
+  color: var(--suave);
+  line-height: 1.8;
+  max-width: 720px;
+  margin: auto;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 25px;
+  box-shadow: 0 15px 45px #44387812;
+}
+.card-icone {
+  display: inline-flex;
+  padding: 14px;
+  border-radius: 16px;
+  background: #f8f0ff;
+  font-size: 25px;
+}
+.card h3 { color: var(--roxo); font-size: 21px; margin: 20px 0 10px; }
+.card p { color: var(--suave); line-height: 1.8; font-size: 15px; }
+
+/* HISTÓRIA */
+.historia { background: #fff8fc; }
+.historia-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.historia-box {
+  background: white;
+  border-radius: 30px;
+  padding: 45px;
+  box-shadow: 0 20px 50px #44387812;
+}
+.historia-box small {
+  color: var(--rosa);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.historia-box h2 {
+  color: var(--roxo);
+  font-size: 47px;
+  line-height: 1.15;
+  margin: 15px 0 25px;
+}
+.historia-box p {
+  color: var(--suave);
+  line-height: 1.95;
+  margin-bottom: 15px;
+}
+.itens { display: grid; gap: 15px; }
+.item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 12px 35px #44387812;
+}
+.item-icone {
+  font-size: 28px;
+  padding: 14px;
+  border-radius: 15px;
+  background: #fff0df;
+}
+.item strong { color: var(--roxo); display: block; }
+.item p { color: var(--suave); font-size: 13px; margin-top: 5px; }
+
+/* FAQ */
+.faq { max-width: 795px; margin: auto; }
+.faq-item {
+  background: white;
+  margin-bottom: 14px;
+  border: 1px solid #f3edf4;
+  border-radius: 19px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px #4438780b;
+}
+.faq-pergunta {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px;
+  border: none;
+  background: white;
+  color: var(--roxo);
+  text-align: left;
+  font-weight: 900;
+}
+.faq-pergunta span {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: #ffeaf2;
+  border-radius: 50%;
+  color: var(--rosa);
+  font-size: 20px;
+}
+.faq-resposta {
+  display: none;
+  padding: 0 24px 23px;
+  color: var(--suave);
+  line-height: 1.8;
+}
+.faq-item.aberto .faq-resposta { display: block; }
+
+/* CHAMADA FINAL */
+.final-section { padding: 35px 0 90px; }
+.final {
+  padding: 75px 30px;
+  border-radius: 38px;
+  text-align: center;
+  background: linear-gradient(125deg, #7971df, #8c70df, #f778b6);
+  color: white;
+  box-shadow: 0 30px 70px #6c63d92b;
+}
+.final h2 {
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 1.13;
+  max-width: 850px;
+  margin: auto;
+}
+.final p {
+  max-width: 620px;
+  margin: 20px auto 30px;
+  line-height: 1.8;
+}
+.final-preco {
+  display: inline-block;
+  padding: 15px 25px;
+  border: 1px solid #ffffff55;
+  border-radius: 20px;
+  background: #ffffff20;
+  margin-bottom: 23px;
+}
+.final-preco small { display: block; font-weight: 900; }
+.final-preco strong { font: 800 35px "Baloo 2", sans-serif; }
+.final .botao {
+  display: flex;
+  width: fit-content;
+  margin: auto;
+  background: white;
+  color: var(--rosa);
+}
+footer {
+  text-align: center;
+  color: #9a9aaa;
+  padding: 35px;
+  font-size: 13px;
+}
+
+/* CARRINHO FIXO */
+.carrinho-fixo {
+  position: fixed;
+  right: 20px;
+  bottom: 25px;
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #ff62a2, #ff956d);
+  color: white;
+  border-radius: 50px;
+  padding: 14px 20px;
+  font-weight: 900;
+  box-shadow: 0 10px 35px #ff6fa770;
+  transition: transform .2s;
+}
+.carrinho-fixo:hover { transform: translateY(-4px); }
+.carrinho-fixo span { font-size: 22px; }
+
+/* ZOOM */
+.zoom {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background: #151126f2;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+.zoom.aberto { display: flex; }
+.zoom img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+.zoom-fechar {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 42px;
+}
+.zoom-seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: white;
+  color: var(--roxo);
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
+  font-size: 27px;
+}
+.zoom-prev { left: 10px; }
+.zoom-next { right: 10px; }
+
+/* CELULAR */
+@media (max-width: 850px) {
+  .container { width: 91%; }
+  nav { height: 65px; }
+  .logo { font-size: 21px; }
+  .menu { gap: 10px; }
+  .menu a:not(.comprar-topo) { display: none; }
+  .menu .comprar-topo { padding: 11px 14px; font-size: 12px; }
+  .hero { padding: 100px 0 65px; min-height: auto; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero h1 { font-size: clamp(50px, 11vw, 70px); }
+  .hero-descricao { font-size: 16px; }
+  .hero-acoes { gap: 15px; flex-wrap: wrap; }
+  .carousel { margin: auto; max-width: 440px; }
+  .beneficios-grid { grid-template-columns: repeat(2, 1fr); }
+  section { padding: 70px 0; }
+  .cards { grid-template-columns: 1fr; }
+  .historia-grid { grid-template-columns: 1fr; gap: 25px; }
+  .historia-box { padding: 30px; }
+  .historia-box h2 { font-size: 38px; }
+  .final { padding: 60px 20px; }
+  .carrinho-fixo {
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    justify-content: center;
+    border-radius: 16px;
+  }
+  footer { padding-bottom: 90px; }
+  .zoom { padding: 55px 38px; }
+}
+@media (max-width: 430px) {
+  .promocao { gap: 10px; padding: 12px; }
+  .desconto { padding: 10px; font-size: 12px; }
+  .promo-texto strong { font-size: 27px; }
+  .hero-acoes .botao { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { transition: none; }
+}
+
+/* MANTER TEXTO À ESQUERDA */
+@media (min-width: 851px) {
+  .hero .container.hero-grid {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 10%;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: 55px;
+  }
+  .hero-texto {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .carousel-area {
+    width: 100%;
+    min-width: 0;
+    justify-self: end;
+  }
+}
+@media (max-width: 850px) {
+  .hero .container.hero-grid {
+    width: 92%;
+    max-width: none;
+    margin: auto;
+    padding: 0;
+    grid-template-columns: 1fr;
+    gap: 35px;
+    text-align: left;
+  }
+  .hero-texto { text-align: left; width: 100%; }
+  .carousel-area { width: 100%; max-width: 440px; margin: auto; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a class="logo" href="#">Mundo Fofinho</a>
+    <div class="menu">
+      <a href="#livro">O livro</a>
+      <a href="#historia">A aventura</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a class="comprar-topo"
+         href="https://pay.kiwify.com.br/7BTtP36"
+         target="_blank" rel="noopener noreferrer">
+        Comprar • R$ 14,90
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- PRIMEIRA TELA -->
+<div class="hero">
+  <div class="container hero-grid">
+
+    <div class="hero-texto">
+      <div class="tag">✨ LIVRO DE COLORIR • VOLUME 1</div>
+
+      <h1>Entre no<br><span>Mundo Fofinho</span></h1>
+
+      <p class="hero-descricao">
+        Uma aventura para colorir cheia de amizade, descobertas e magia.
+        Acompanhe Téo, Lili, Nino e Piu enquanto procuram os três
+        Itens Mágicos para salvar a magia das cores.
+      </p>
+
+      <div class="personagens">
+        <span>🐻 Téo</span>
+        <span>🐰 Lili</span>
+        <span>🐱 Nino</span>
+        <span>🐥 Piu</span>
+      </div>
+
+      <div class="promocao">
+        <div class="desconto">🔥 50% OFF</div>
+        <div class="promo-texto">
+          <small>PROMOÇÃO ESPECIAL</small>
+          <span class="preco-antigo">De R$ 29,90</span>
+          <span style="font-weight:800;color:var(--suave)">por</span>
+          <strong>R$ 14,90</strong>
+          <p><b>Pagamento único</b> • acesso ao PDF após a compra</p>
+        </div>
+      </div>
+
+      <div class="hero-acoes">
+        <a class="botao"
+           href="https://pay.kiwify.com.br/7BTtP36"
+           target="_blank" rel="noopener noreferrer">
+          🛒 COMPRE AQUI — R$ 14,90 →
+        </a>
+        <a class="link-livro" href="#livro">Conhecer o livro</a>
+      </div>
+    </div>
+
+    <!-- CARROSSEL -->
+    <div class="carousel-area">
+      <div class="carousel" id="carousel">
+        <div class="carousel-janela" id="janela">
+          <div class="carousel-track" id="track">
+
+            <div class="slide">
+              <img src="imagem1.png" alt="Capa do livro Mundo Fofinho">
+              <div class="slide-label">Capa</div>
+            </div>
+
+            <div class="slide">
+              <img src="veja por dentro.png" alt="Veja por dentro do livro">
+              <div class="slide-label">Veja por dentro</div>
+            </div>
+
+            <div class="slide">
+              <img src="pagina secreta.png" alt="Página secreta do livro">
+              <div class="slide-label">Página secreta</div>
+            </div>
+
+            <div class="slide">
+              <img src="aventura.png" alt="Aventura do Mundo Fofinho">
+              <div class="slide-label">Aventura</div>
+            </div>
+
+          </div>
+        </div>
+
+        <button class="seta anterior" onclick="mudar(-1)" aria-label="Imagem anterior">‹</button>
+        <button class="seta proxima" onclick="mudar(1)" aria-label="Próxima imagem">›</button>
+      </div>
+
+      <div class="pontos">
+        <button class="ponto ativo" onclick="ir(0)" aria-label="Capa"></button>
+        <button class="ponto" onclick="ir(1)" aria-label="Veja por dentro"></button>
+        <button class="ponto" onclick="ir(2)" aria-label="Página secreta"></button>
+        <button class="ponto" onclick="ir(3)" aria-label="Aventura"></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BENEFÍCIOS -->
+<div class="beneficios">
+  <div class="container beneficios-grid">
+    <div class="beneficio"><span>🎨</span>Livro de colorir</div>
+    <div class="beneficio"><span>📖</span>História completa</div>
+    <div class="beneficio"><span>🔎</span>Páginas secretas</div>
+    <div class="beneficio"><span>✨</span>Aventura e magia</div>
+  </div>
+</div>
+
+<!-- O LIVRO -->
+<section id="livro">
+  <div class="container">
+    <div class="section-heading">
+      <small>O MUNDO FOFINHO</small>
+      <h2>Mais do que um livro para colorir</h2>
+      <p>
+        Cada página faz parte de uma aventura. A criança colore enquanto
+        acompanha Téo, Lili, Nino e Piu pelo Mundo Fofinho.
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icone">🎨</div>
+        <h3>Criatividade</h3>
+        <p>Ilustrações em preto e branco esperando ganhar novas cores e interpretações.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icone">🔎</div>
+        <h3>Descobertas</h3>
+        <p>Páginas secretas e detalhes especiais tornam a aventura ainda mais divertida.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icone">📖</div>
+        <h3>Uma verdadeira história</h3>
+        <p>O livro acompanha os personagens em uma jornada com começo, desafios e descobertas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTÓRIA -->
+<section class="historia" id="historia">
+  <div class="container historia-grid">
+
+    <div class="historia-box">
+      <small>A AVENTURA COMEÇA</small>
+      <h2>As cores estão desaparecendo...</h2>
+
+      <p>Algo misterioso está acontecendo no Mundo Fofinho.</p>
+
+      <p>
+        Téo, Lili, Nino e Piu precisam encontrar os três Itens Mágicos
+        e tentar salvar a magia das cores.
+      </p>
+
+      <p>
+        Pelo caminho surgem pistas, lugares mágicos e páginas
+        secretas escondidas ao longo da aventura.
+      </p>
+    </div>
+
+    <div class="itens">
+      <div class="item">
+        <div class="item-icone">🍓</div>
+        <div>
+          <strong>Morango Mágico</strong>
+          <p>Um dos três tesouros escondidos.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-icone">⭐</div>
+        <div>
+          <strong>Estrela Mágica</strong>
+          <p>Parte da magia perdida.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-icone">❤️</div>
+        <div>
+          <strong>Coração Mágico</strong>
+          <p>Um item especial da aventura.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PERGUNTAS -->
+<section id="duvidas">
+  <div class="container">
+    <div class="section-heading">
+      <small>DÚVIDAS FREQUENTES</small>
+      <h2>Conheça melhor o Mundo Fofinho</h2>
+      <p>Algumas respostas para você conhecer melhor o livro antes de começar a aventura.</p>
+    </div>
+
+    <div class="faq">
+
+      <div class="faq-item">
+        <button class="faq-pergunta" aria-expanded="false">
+          O Mundo Fofinho é apenas um livro de colorir?
+          <span>+</span>
+        </button>
+        <div class="faq-resposta">
+          Não! Além das ilustrações para colorir, o livro apresenta
+          uma aventura com Téo, Lili, Nino e Piu.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pergunta" aria-expanded="false">
+          As páginas internas são coloridas?
+          <span>+</span>
+        </button>
+        <div class="faq-resposta">
+          Não. As páginas internas possuem ilustrações em preto e branco,
+          feitas para serem coloridas.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pergunta" aria-expanded="false">
+          Existem páginas secretas?
+          <span>+</span>
+        </button>
+        <div class="faq-resposta">
+          Sim! Durante a aventura existem páginas secretas e
+          detalhes especiais para descobrir.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pergunta" aria-expanded="false">
+          Qual é a história do Volume 1?
+          <span>+</span>
+        </button>
+        <div class="faq-resposta">
+          Quatro amigos precisam encontrar três Itens Mágicos
+          para tentar salvar as cores do Mundo Fofinho.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-pergunta" aria-expanded="false">
+          Como faço para comprar?
+          <span>+</span>
+        </button>
+        <div class="faq-resposta">
+          Clique em qualquer botão de compra do site.
+          Você será direcionado ao checkout para realizar o pagamento.
+          O produto é digital, em PDF.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CHAMADA FINAL -->
+<section class="final-section">
+  <div class="container">
+    <div class="final">
+      <h2>Sua aventura no Mundo Fofinho começa aqui</h2>
+
+      <p>
+        Conheça o Volume 1, encontre os Itens Mágicos e dê
+        vida às páginas usando suas próprias cores.
+      </p>
+
+      <div class="final-preco">
+        <small>🔥 PROMOÇÃO ESPECIAL</small>
+        <span style="text-decoration:line-through">De R$ 29,90</span>
+        <span> por </span>
+        <strong>R$ 14,90</strong>
+        <small>Você economiza R$ 15,00</small>
+      </div>
+
+      <a class="botao"
+         href="https://pay.kiwify.com.br/7BTtP36"
+         target="_blank" rel="noopener noreferrer">
+        🛒 COMPRE AQUI — R$ 14,90 →
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 oficial Mundo Fofinho • Volume 1
+</footer>
+
+<!-- CARRINHO QUE ACOMPANHA A ROLAGEM -->
+<a class="carrinho-fixo"
+   href="https://pay.kiwify.com.br/7BTtP36"
+   target="_blank" rel="noopener noreferrer">
+  <span>🛒</span> Comprar • R$ 14,90
+</a>
+
+<!-- AMPLIAR IMAGENS -->
+<div class="zoom" id="zoom" role="dialog" aria-modal="true" aria-label="Visualização ampliada">
+  <button class="zoom-fechar" onclick="fecharZoom()" aria-label="Fechar">×</button>
+  <button class="zoom-seta zoom-prev" onclick="moverZoom(-1)" aria-label="Imagem anterior">‹</button>
+  <img id="zoomImg" alt="Imagem ampliada do livro">
+  <button class="zoom-seta zoom-next" onclick="moverZoom(1)" aria-label="Próxima imagem">›</button>
+</div>
+
+<script>
+const track = document.getElementById("track");
+const imagens = document.querySelectorAll(".slide img");
+const pontos = document.querySelectorAll(".ponto");
+const carousel = document.getElementById("carousel");
+const janela = document.getElementById("janela");
+const zoom = document.getElementById("zoom");
+const zoomImg = document.getElementById("zoomImg");
+
+let atual = 0;
+let automatico;
+let inicioToque = 0;
+let arrastou = false;
+
+const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+function ir(numero) {
+  atual = (numero + imagens.length) % imagens.length;
+  track.style.transform = `translateX(-${atual * 100}%)`;
+
+  pontos.forEach(function(ponto, i) {
+    ponto.classList.toggle("ativo", i === atual);
+  });
+
+  if (zoom.classList.contains("aberto")) {
+    atualizarZoom();
+  }
+
+  iniciarAutomatico();
+}
+
+function mudar(direcao) {
+  ir(atual + direcao);
+}
+
+function pararAutomatico() {
+  clearInterval(automatico);
+}
+
+function iniciarAutomatico() {
+  pararAutomatico();
+
+  if (reduzirMovimento.matches) return;
+  if (document.hidden) return;
+  if (zoom.classList.contains("aberto")) return;
+  if (carousel.matches(":hover")) return;
+
+  automatico = setInterval(function() {
+    ir(atual + 1);
+  }, 4000);
+}
+
+carousel.addEventListener("mouseenter", pararAutomatico);
+carousel.addEventListener("mouseleave", iniciarAutomatico);
+
+document.addEventListener("visibilitychange", function() {
+  if (document.hidden) pararAutomatico();
+  else iniciarAutomatico();
+});
+
+// DESLIZAR NO CELULAR
+janela.addEventListener("touchstart", function(e) {
+  inicioToque = e.changedTouches[0].screenX;
+  arrastou = false;
+  pararAutomatico();
+}, { passive: true });
+
+janela.addEventListener("touchend", function(e) {
+  const diferenca = e.changedTouches[0].screenX - inicioToque;
+
+  if (Math.abs(diferenca) > 50) {
+    arrastou = true;
+    mudar(diferenca < 0 ? 1 : -1);
+  }
+
+  iniciarAutomatico();
+}, { passive: true });
+
+// ABRIR IMAGEM GRANDE
+imagens.forEach(function(img, i) {
+  img.addEventListener("click", function() {
+    if (arrastou) {
+      arrastou = false;
+      return;
+    }
+
+    ir(i);
+    zoom.classList.add("aberto");
+    atualizarZoom();
+    document.body.style.overflow = "hidden";
+    pararAutomatico();
+  });
+});
+
+function atualizarZoom() {
+  zoomImg.src = imagens[atual].src;
+  zoomImg.alt = imagens[atual].alt;
+}
+
+function moverZoom(direcao) {
+  ir(atual + direcao);
+}
+
+function fecharZoom() {
+  zoom.classList.remove("aberto");
+  document.body.style.overflow = "";
+  zoomImg.removeAttribute("src");
+  iniciarAutomatico();
+}
+
+zoom.addEventListener("click", function(e) {
+  if (e.target === zoom) fecharZoom();
+});
+
+document.addEventListener("keydown", function(e) {
+  if (!zoom.classList.contains("aberto")) return;
+
+  if (e.key === "Escape") fecharZoom();
+  if (e.key === "ArrowRight") moverZoom(1);
+  if (e.key === "ArrowLeft") moverZoom(-1);
+});
+
+// FAQ
+document.querySelectorAll(".faq-pergunta").forEach(function(botao) {
+  botao.addEventListener("click", function() {
+    const item = this.parentElement;
+    const aberto = item.classList.toggle("aberto");
+    botao.setAttribute("aria-expanded", aberto);
+    botao.querySelector("span").textContent = aberto ? "−" : "+";
+  });
+});
+
+// INICIAR
+iniciarAutomatico();
+</script>
+
+</body>
+</html>
