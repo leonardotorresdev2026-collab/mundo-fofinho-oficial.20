@@ -9,83 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-    
-/* CORREÇÃO DO LAYOUT ORIGINAL */
-
-/* Primeira tela ocupando a largura, sem centralizar o texto */
-@media (min-width: 851px) {
-  .hero .container.hero-grid {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding-left: 0;
-    padding-right: 10%;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-    gap: 55px;
-  }
-
-  .hero-copy {
-    text-align: left;
-    margin-left: 0;
-    padding-left: 0;
-  }
-
-  .product-showcase {
-    width: 100%;
-    min-width: 0;
-    justify-self: end;
-  }
-
-  /* Carrinho sempre visível durante a rolagem */
-  .mobile-buy {
-    display: flex;
-    left: auto;
-    right: 22px;
-    bottom: 22px;
-    width: 270px;
-  }
-}
-
-/* Celular */
-@media (max-width: 850px) {
-  .hero .container.hero-grid {
-    width: 92%;
-    max-width: none;
-    margin: auto;
-    padding: 0;
-    grid-template-columns: 1fr;
-    gap: 35px;
-    text-align: left;
-  }
-
-  .hero-copy {
-    text-align: left;
-    width: 100%;
-  }
-
-  .product-showcase {
-    width: 100%;
-    max-width: 440px;
-    margin: auto;
-  }
-
-  .mobile-buy {
-    display: flex;
-    position: fixed;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    width: auto;
-    z-index: 9999;
-  }
-}
-
 :root {
   --rosa: #ff6fa7;
   --roxo: #6c63d9;
   --texto: #35364e;
   --suave: #74758a;
 }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -95,10 +25,10 @@ body {
 }
 a { text-decoration: none; }
 button { font-family: inherit; cursor: pointer; }
-h1,h2,h3 { font-family: "Baloo 2",sans-serif; }
-.container { width: min(1140px,90%); margin: auto; }
+h1, h2, h3 { font-family: "Baloo 2", sans-serif; }
+.container { width: min(1140px, 90%); margin: auto; }
 
-/* MENU ORIGINAL */
+/* MENU */
 header {
   position: fixed;
   top: 0;
@@ -116,7 +46,7 @@ nav {
 }
 .logo {
   color: var(--rosa);
-  font: 800 25px "Baloo 2",sans-serif;
+  font: 800 25px "Baloo 2", sans-serif;
 }
 .menu { display: flex; align-items: center; gap: 28px; }
 .menu a { color: var(--texto); font-size: 14px; font-weight: 900; }
@@ -133,9 +63,9 @@ nav {
   padding: 115px 0 85px;
   min-height: 850px;
   background:
-    radial-gradient(circle at 0% 10%,#ffdfed,transparent 40%),
-    radial-gradient(circle at 100% 5%,#d9f0ff,transparent 40%),
-    radial-gradient(circle at 90% 95%,#fff0cb,transparent 30%),
+    radial-gradient(circle at 0% 10%, #ffdfed, transparent 40%),
+    radial-gradient(circle at 100% 5%, #d9f0ff, transparent 40%),
+    radial-gradient(circle at 90% 95%, #fff0cb, transparent 30%),
     #fffafd;
 }
 .hero-grid {
@@ -156,7 +86,7 @@ nav {
   letter-spacing: .5px;
 }
 .hero h1 {
-  font-size: clamp(58px,6vw,88px);
+  font-size: clamp(58px, 6vw, 88px);
   line-height: 1.03;
   letter-spacing: -2px;
   color: var(--roxo);
@@ -209,7 +139,7 @@ nav {
   flex-shrink: 0;
   padding: 13px 15px;
   border-radius: 16px;
-  background: linear-gradient(135deg,#ff4c96,#ff9168);
+  background: linear-gradient(135deg, #ff4c96, #ff9168);
   color: white;
   font-size: 14px;
   font-weight: 900;
@@ -230,7 +160,7 @@ nav {
 }
 .promo-texto strong {
   color: #ff4f97;
-  font: 800 32px "Baloo 2",sans-serif;
+  font: 800 32px "Baloo 2", sans-serif;
 }
 .promo-texto p { font-size: 12px; font-weight: 800; }
 .promo-texto p b { color: var(--roxo); }
@@ -241,7 +171,7 @@ nav {
   justify-content: center;
   padding: 18px 30px;
   border-radius: 17px;
-  background: linear-gradient(135deg,#ff61a4,#ff9d69);
+  background: linear-gradient(135deg, #ff61a4, #ff9d69);
   color: white;
   font-size: 15px;
   font-weight: 900;
@@ -304,7 +234,12 @@ nav {
 }
 .anterior { left: 25px; }
 .proxima { right: 25px; }
-.pontos { display: flex; justify-content: center; gap: 7px; margin-top: 18px; }
+.pontos {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 18px;
+}
 .ponto {
   width: 9px;
   height: 9px;
@@ -315,8 +250,16 @@ nav {
 .ponto.ativo { width: 27px; background: var(--rosa); }
 
 /* BENEFÍCIOS */
-.beneficios { padding: 30px 0; background: white; border-bottom: 1px solid #f5eff5; }
-.beneficios-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+.beneficios {
+  padding: 30px 0;
+  background: white;
+  border-bottom: 1px solid #f5eff5;
+}
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
 .beneficio { text-align: center; font-size: 14px; font-weight: 900; }
 .beneficio span { display: block; font-size: 26px; margin-bottom: 6px; }
 
@@ -331,7 +274,7 @@ section { padding: 100px 0; }
 }
 .section-heading h2 {
   color: var(--roxo);
-  font-size: clamp(38px,5vw,58px);
+  font-size: clamp(38px, 5vw, 58px);
   line-height: 1.12;
   margin: 12px auto 20px;
   max-width: 850px;
@@ -342,7 +285,11 @@ section { padding: 100px 0; }
   max-width: 720px;
   margin: auto;
 }
-.cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
 .card {
   background: white;
   padding: 28px;
@@ -361,16 +308,34 @@ section { padding: 100px 0; }
 
 /* HISTÓRIA */
 .historia { background: #fff8fc; }
-.historia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.historia-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
 .historia-box {
   background: white;
   border-radius: 30px;
   padding: 45px;
   box-shadow: 0 20px 50px #44387812;
 }
-.historia-box small { color: var(--rosa); font-weight: 900; letter-spacing: 2px; }
-.historia-box h2 { color: var(--roxo); font-size: 47px; line-height: 1.15; margin: 15px 0 25px; }
-.historia-box p { color: var(--suave); line-height: 1.95; margin-bottom: 15px; }
+.historia-box small {
+  color: var(--rosa);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.historia-box h2 {
+  color: var(--roxo);
+  font-size: 47px;
+  line-height: 1.15;
+  margin: 15px 0 25px;
+}
+.historia-box p {
+  color: var(--suave);
+  line-height: 1.95;
+  margin-bottom: 15px;
+}
 .itens { display: grid; gap: 15px; }
 .item {
   display: flex;
@@ -381,7 +346,12 @@ section { padding: 100px 0; }
   border-radius: 22px;
   box-shadow: 0 12px 35px #44387812;
 }
-.item-icone { font-size: 28px; padding: 14px; border-radius: 15px; background: #fff0df; }
+.item-icone {
+  font-size: 28px;
+  padding: 14px;
+  border-radius: 15px;
+  background: #fff0df;
+}
 .item strong { color: var(--roxo); display: block; }
 .item p { color: var(--suave); font-size: 13px; margin-top: 5px; }
 
@@ -419,7 +389,12 @@ section { padding: 100px 0; }
   color: var(--rosa);
   font-size: 20px;
 }
-.faq-resposta { display: none; padding: 0 24px 23px; color: var(--suave); line-height: 1.8; }
+.faq-resposta {
+  display: none;
+  padding: 0 24px 23px;
+  color: var(--suave);
+  line-height: 1.8;
+}
 .faq-item.aberto .faq-resposta { display: block; }
 
 /* CHAMADA FINAL */
@@ -428,12 +403,21 @@ section { padding: 100px 0; }
   padding: 75px 30px;
   border-radius: 38px;
   text-align: center;
-  background: linear-gradient(125deg,#7971df,#8c70df,#f778b6);
+  background: linear-gradient(125deg, #7971df, #8c70df, #f778b6);
   color: white;
   box-shadow: 0 30px 70px #6c63d92b;
 }
-.final h2 { font-size: clamp(40px,5vw,60px); line-height: 1.13; max-width: 850px; margin: auto; }
-.final p { max-width: 620px; margin: 20px auto 30px; line-height: 1.8; }
+.final h2 {
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 1.13;
+  max-width: 850px;
+  margin: auto;
+}
+.final p {
+  max-width: 620px;
+  margin: 20px auto 30px;
+  line-height: 1.8;
+}
 .final-preco {
   display: inline-block;
   padding: 15px 25px;
@@ -443,9 +427,20 @@ section { padding: 100px 0; }
   margin-bottom: 23px;
 }
 .final-preco small { display: block; font-weight: 900; }
-.final-preco strong { font: 800 35px "Baloo 2",sans-serif; }
-.final .botao { display: flex; width: fit-content; margin: auto; background: white; color: var(--rosa); }
-footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
+.final-preco strong { font: 800 35px "Baloo 2", sans-serif; }
+.final .botao {
+  display: flex;
+  width: fit-content;
+  margin: auto;
+  background: white;
+  color: var(--rosa);
+}
+footer {
+  text-align: center;
+  color: #9a9aaa;
+  padding: 35px;
+  font-size: 13px;
+}
 
 /* CARRINHO FIXO */
 .carrinho-fixo {
@@ -456,7 +451,7 @@ footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
   display: flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(135deg,#ff62a2,#ff956d);
+  background: linear-gradient(135deg, #ff62a2, #ff956d);
   color: white;
   border-radius: 50px;
   padding: 14px 20px;
@@ -479,7 +474,12 @@ footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
   padding: 60px;
 }
 .zoom.aberto { display: flex; }
-.zoom img { max-width: 100%; max-height: 85vh; object-fit: contain; border-radius: 12px; }
+.zoom img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
 .zoom-fechar {
   position: absolute;
   top: 15px;
@@ -505,7 +505,7 @@ footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
 .zoom-next { right: 10px; }
 
 /* CELULAR */
-@media(max-width:850px) {
+@media (max-width: 850px) {
   .container { width: 91%; }
   nav { height: 65px; }
   .logo { font-size: 21px; }
@@ -514,11 +514,11 @@ footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
   .menu .comprar-topo { padding: 11px 14px; font-size: 12px; }
   .hero { padding: 100px 0 65px; min-height: auto; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero h1 { font-size: clamp(50px,11vw,70px); }
+  .hero h1 { font-size: clamp(50px, 11vw, 70px); }
   .hero-descricao { font-size: 16px; }
   .hero-acoes { gap: 15px; flex-wrap: wrap; }
   .carousel { margin: auto; max-width: 440px; }
-  .beneficios-grid { grid-template-columns: repeat(2,1fr); }
+  .beneficios-grid { grid-template-columns: repeat(2, 1fr); }
   section { padding: 70px 0; }
   .cards { grid-template-columns: 1fr; }
   .historia-grid { grid-template-columns: 1fr; gap: 25px; }
@@ -535,14 +535,50 @@ footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
   footer { padding-bottom: 90px; }
   .zoom { padding: 55px 38px; }
 }
-@media(max-width:430px) {
+@media (max-width: 430px) {
   .promocao { gap: 10px; padding: 12px; }
   .desconto { padding: 10px; font-size: 12px; }
   .promo-texto strong { font-size: 27px; }
   .hero-acoes .botao { width: 100%; }
 }
-@media(prefers-reduced-motion:reduce) {
+@media (prefers-reduced-motion: reduce) {
   .carousel-track { transition: none; }
+}
+
+/* MANTER TEXTO À ESQUERDA */
+@media (min-width: 851px) {
+  .hero .container.hero-grid {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 10%;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: 55px;
+  }
+  .hero-texto {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .carousel-area {
+    width: 100%;
+    min-width: 0;
+    justify-self: end;
+  }
+}
+@media (max-width: 850px) {
+  .hero .container.hero-grid {
+    width: 92%;
+    max-width: none;
+    margin: auto;
+    padding: 0;
+    grid-template-columns: 1fr;
+    gap: 35px;
+    text-align: left;
+  }
+  .hero-texto { text-align: left; width: 100%; }
+  .carousel-area { width: 100%; max-width: 440px; margin: auto; }
 }
 </style>
 </head>
@@ -556,7 +592,11 @@ footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
       <a href="#livro">O livro</a>
       <a href="#historia">A aventura</a>
       <a href="#duvidas">Dúvidas</a>
-      <a class="comprar-topo" href="https://pay.kiwify.com.br/7BTtP36" target="_blank" rel="noopener noreferrer">Comprar • R$ 11,90</a>
+      <a class="comprar-topo"
+         href="https://pay.kiwify.com.br/7BTtP36"
+         target="_blank" rel="noopener noreferrer">
+        Comprar • R$ 14,90
+      </a>
     </div>
   </nav>
 </header>
@@ -584,18 +624,22 @@ footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
       </div>
 
       <div class="promocao">
-        <div class="desconto">🔥 60% OFF</div>
+        <div class="desconto">🔥 50% OFF</div>
         <div class="promo-texto">
           <small>PROMOÇÃO ESPECIAL</small>
           <span class="preco-antigo">De R$ 29,90</span>
           <span style="font-weight:800;color:var(--suave)">por</span>
-          <strong>R$ 11,90</strong>
+          <strong>R$ 14,90</strong>
           <p><b>Pagamento único</b> • acesso ao PDF após a compra</p>
         </div>
       </div>
 
       <div class="hero-acoes">
-        <a class="botao" href="https://pay.kiwify.com.br/7BTtP36" target="_blank" rel="noopener noreferrer">🛒 COMPRE AQUI — R$ 11,90 →</a>
+        <a class="botao"
+           href="https://pay.kiwify.com.br/7BTtP36"
+           target="_blank" rel="noopener noreferrer">
+          🛒 COMPRE AQUI — R$ 14,90 →
+        </a>
         <a class="link-livro" href="#livro">Conhecer o livro</a>
       </div>
     </div>
@@ -813,7 +857,6 @@ footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
 <section class="final-section">
   <div class="container">
     <div class="final">
-
       <h2>Sua aventura no Mundo Fofinho começa aqui</h2>
 
       <p>
@@ -825,14 +868,15 @@ footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
         <small>🔥 PROMOÇÃO ESPECIAL</small>
         <span style="text-decoration:line-through">De R$ 29,90</span>
         <span> por </span>
-        <strong>R$ 11,90</strong>
-        <small>Você economiza R$ 18,00</small>
+        <strong>R$ 14,90</strong>
+        <small>Você economiza R$ 15,00</small>
       </div>
 
-      <a class="botao" href="https://pay.kiwify.com.br/7BTtP36" target="_blank" rel="noopener noreferrer">
-        🛒 COMPRE AQUI — R$ 11,90 →
+      <a class="botao"
+         href="https://pay.kiwify.com.br/7BTtP36"
+         target="_blank" rel="noopener noreferrer">
+        🛒 COMPRE AQUI — R$ 14,90 →
       </a>
-
     </div>
   </div>
 </section>
@@ -842,8 +886,10 @@ footer { text-align: center; color: #9a9aaa; padding: 35px; font-size: 13px; }
 </footer>
 
 <!-- CARRINHO QUE ACOMPANHA A ROLAGEM -->
-<a class="carrinho-fixo" href="https://pay.kiwify.com.br/7BTtP36" target="_blank" rel="noopener noreferrer">
-  <span>🛒</span> Comprar • R$ 11,90
+<a class="carrinho-fixo"
+   href="https://pay.kiwify.com.br/7BTtP36"
+   target="_blank" rel="noopener noreferrer">
+  <span>🛒</span> Comprar • R$ 14,90
 </a>
 
 <!-- AMPLIAR IMAGENS -->
@@ -867,6 +913,7 @@ let atual = 0;
 let automatico;
 let inicioToque = 0;
 let arrastou = false;
+
 const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function ir(numero) {
